@@ -7,6 +7,7 @@ export interface ButtonClasses {
   // 状态
   disabled: string;
   loading: string;
+  text: string;
 
   // 类型
   default: string;

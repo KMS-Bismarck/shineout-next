@@ -1,5 +1,4 @@
 import cssVars from '../cssvar';
-// import { colorVar } from '../themes/default';
 import { JsStyles } from '../jss-style';
 
 type ButtonClass =
@@ -16,10 +15,44 @@ type ButtonClass =
   | 'light'
   | 'dark'
   | 'link'
+  | 'text'
   | '@keyframes parimaryAnimation'
   | '@keyframes successAnimation'
   | '@keyframes dangerAnimation'
-  | '@keyframes warningAnimation';
+  | '@keyframes warningAnimation'
+  | '@keyframes defaultAnimation';
+
+const button = (type: string) => ({
+  color: cssVars[`button${type}Color` as keyof typeof cssVars],
+  backgroundColor: cssVars[`button${type}Bg` as keyof typeof cssVars],
+  borderColor: cssVars[`button${type}BorderColor` as keyof typeof cssVars],
+
+  '&:hover': {
+    color: cssVars[`button${type}ColorHover` as keyof typeof cssVars],
+    backgroundColor: cssVars[`button${type}BgHover` as keyof typeof cssVars],
+    borderColor: cssVars[`button${type}BorderColorHover` as keyof typeof cssVars],
+  },
+
+  '&:active': {
+    animationName: '$parimaryAnimation',
+  },
+});
+
+const text = (type: string) => ({
+  color: cssVars[`${type.toLocaleLowerCase()}Color` as keyof typeof cssVars],
+  background: 'transparent',
+  borderColor: 'transparent',
+
+  '&:hover': {
+    opacity: 0.8,
+    borderColor: 'transparent',
+    backgroundColor: 'transparent',
+  },
+
+  '&:active': {
+    animationName: 'none',
+  },
+});
 
 const ButtonStyle: JsStyles<ButtonClass> = {
   button: {
@@ -44,93 +77,34 @@ const ButtonStyle: JsStyles<ButtonClass> = {
     },
 
     '&:active': {
-      backgroundImage: 'none',
-      animationTimingFunction: 'ease-out',
-      animationDuration: '0.4s',
       animationDelay: '0s',
+      backgroundImage: 'none',
+      animationDuration: '0.4s',
+      animationFillMode: 'none',
       animationIterationCount: '1',
       animationDirection: 'normal',
-      animationFillMode: 'none',
       animationPlayState: 'running',
+      animationTimingFunction: 'ease-out',
     },
   },
 
   default: {
-    color: cssVars.buttonDefaultColor,
-    backgroundColor: cssVars.buttonDefaultBg,
-    borderColor: cssVars.buttonDefaultBorderColor,
-    '&:hover': {
-      color: cssVars.buttonDefaultColorHover,
-      backgroundColor: cssVars.buttonDefaultBgHover,
-      borderColor: cssVars.buttonDefaultBorderColorHover,
-    },
+    ...button('Default'),
   },
   primary: {
-    color: cssVars.buttonPrimaryColor,
-    backgroundColor: cssVars.buttonPrimaryBg,
-    borderColor: cssVars.buttonPrimaryBorderColor,
-
-    '&:hover': {
-      color: cssVars.buttonPrimaryColorHover,
-      backgroundColor: cssVars.buttonPrimaryBgHover,
-      borderColor: cssVars.buttonPrimaryBorderColorHover,
-    },
-
-    '&:active': {
-      animationName: '$parimaryAnimation',
-    },
+    ...button('Primary'),
   },
   secondary: {
-    color: cssVars.buttonSecondaryColor,
-    backgroundColor: cssVars.buttonSecondaryBg,
-    borderColor: cssVars.buttonSecondaryBorderColor,
-    '&:hover': {
-      color: cssVars.buttonSecondaryColorHover,
-      backgroundColor: cssVars.buttonSecondaryBgHover,
-      borderColor: cssVars.buttonSecondaryBorderColorHover,
-    },
-    '&:active': {
-      animationName: '$parimaryAnimation',
-    },
+    ...button('Secondary'),
   },
   danger: {
-    color: cssVars.buttonDangerColor,
-    backgroundColor: cssVars.buttonDangerBg,
-    borderColor: cssVars.buttonDangerBorderColor,
-    '&:hover': {
-      color: cssVars.buttonDangerColorHover,
-      backgroundColor: cssVars.buttonDangerBgHover,
-      borderColor: cssVars.buttonDangerBorderColorHover,
-    },
-    '&:active': {
-      animationName: '$dangerAnimation',
-    },
+    ...button('Danger'),
   },
   warning: {
-    color: cssVars.buttonWarningColor,
-    backgroundColor: cssVars.buttonWarningBg,
-    borderColor: cssVars.buttonWarningBorderColor,
-    '&:hover': {
-      color: cssVars.buttonWarningColorHover,
-      backgroundColor: cssVars.buttonWarningBgHover,
-      borderColor: cssVars.buttonWarningBorderColorHover,
-    },
-    '&:active': {
-      animationName: '$warningAnimation',
-    },
+    ...button('Warning'),
   },
   success: {
-    color: cssVars.buttonSuccessColor,
-    backgroundColor: cssVars.buttonSuccessBg,
-    borderColor: cssVars.buttonSuccessBorderColor,
-    '&:hover': {
-      color: cssVars.buttonSuccessColorHover,
-      backgroundColor: cssVars.buttonSuccessBgHover,
-      borderColor: cssVars.buttonSuccessBorderColorHover,
-    },
-    '&:active': {
-      animationName: '$successAnimation',
-    },
+    ...button('Success'),
   },
   info: {},
   light: {},
@@ -139,7 +113,29 @@ const ButtonStyle: JsStyles<ButtonClass> = {
   disabled: {},
   loading: {},
 
+  text: {
+    '&$default': {
+      ...text('Default'),
+    },
+    '&$primary': {
+      ...text('Primary'),
+    },
+    '&$success': {
+      ...text('Success'),
+    },
+    '&$danger': {
+      ...text('Danger'),
+    },
+    '&$warning': {
+      ...text('Warning'),
+    },
+    '&$secondary': {
+      ...text('Secondary'),
+    },
+  },
+
   // animation
+  '@keyframes defaultAnimation': cssVars.buttonDefaultActiveAnimation,
   '@keyframes parimaryAnimation': cssVars.buttonPrimaryActiveAnimation,
   '@keyframes successAnimation': cssVars.buttonSuccessActiveAnimation,
   '@keyframes dangerAnimation': cssVars.buttonDangerActiveAnimation,

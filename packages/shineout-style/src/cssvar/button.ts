@@ -30,6 +30,12 @@ export default {
   buttonDefaultColorHover: va('button-default-color-hover', colorVar.primaryColor),
   buttonDefaultBgHover: va('button-default-bg-hover', colorVar.white),
   buttonDefaultBorderColorHover: va('button-default-border-color-hover', colorVar.primaryColor),
+  // !!!
+  buttonDefaultActiveAnimation: animation(
+    va('default-color-fade-60', 'hsla(0,0%,85.1%,.6)'),
+    va('default-color-fade-0', 'hsla(0,0%,85.1%,.0)'),
+    va('default-color-fade-0', 'hsla(0,0%,85.1%,.0)'),
+  ),
 
   // primary button
   buttonPrimaryColor: va('button-primary-color', colorVar.white),

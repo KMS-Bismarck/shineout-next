@@ -90,6 +90,7 @@ const useButton = (props: BaseButtonProps = {}) => {
     type,
     disabled,
     loading,
+    text,
     getRootProps,
     getButtonProps,
   };

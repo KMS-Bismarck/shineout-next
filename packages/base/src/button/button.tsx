@@ -6,7 +6,9 @@ import { ButtonProps } from './button.type';
 const Button = (props: ButtonProps) => {
   const { jssStyle, className, style, children, renderInnerWrapper, ...rest } = props;
 
-  const { getRootProps, getButtonProps, disabled, loading, type } = useButton({ ...rest });
+  const { getRootProps, getButtonProps, disabled, text, loading, type } = useButton({
+    ...rest,
+  });
 
   const rootClass = classNames([
     className,
@@ -15,6 +17,7 @@ const Button = (props: ButtonProps) => {
     {
       [jssStyle.disabled]: disabled,
       [jssStyle.loading]: loading,
+      [jssStyle.text]: text,
     },
   ]);
 

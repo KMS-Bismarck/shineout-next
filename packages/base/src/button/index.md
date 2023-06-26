@@ -17,5 +17,6 @@ Button Describe
 
 <code src="./__example__/s-001-base.tsx"></code>
 <code src="./__example__/s-002-disabled.tsx"></code>
+<code src="./__example__/s-003-text.tsx"></code>
 
 # Api

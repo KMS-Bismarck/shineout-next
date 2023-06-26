@@ -49,6 +49,20 @@ export const examples = [
       .trim(),
     component: require('base/button/__example__/s-002-disabled.tsx').default,
   },
+  {
+    propName: {
+      cn: '文字按钮',
+      en: 'Text',
+    },
+    propDescribe: {
+      cn: '文字 Button 用法',
+      en: 'Text Button',
+    },
+    code: require('!raw-loader!base/button/__example__/s-003-text.tsx')
+      .default.replace(/\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/gm, '')
+      .trim(),
+    component: require('base/button/__example__/s-003-text.tsx').default,
+  },
 ];
 
 export default (props) => (

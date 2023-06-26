@@ -18,6 +18,9 @@ export interface ButtonPropsOwn {
   loading?: boolean;
   outline?: boolean;
   type?: ButtonType;
+  /**
+   *  文字按钮
+   */
   text?: boolean;
   space?: boolean;
   href?: string;

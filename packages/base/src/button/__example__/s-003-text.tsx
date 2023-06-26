@@ -1,8 +1,8 @@
 /**
- * cn - 基本用法
- *    --基础 Button 用法
- * en - Base
- *    --Base Button
+ * cn - 文字按钮
+ *    --文字 Button 用法
+ * en - Text
+ *    --Text Button
  */
 
 import React from 'react';
@@ -16,31 +16,33 @@ export default () => {
     <div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <span>
-          <Button jssStyle={jssStyle}>Default</Button>
+          <Button jssStyle={jssStyle} text>
+            Default
+          </Button>
         </span>
 
         <span>
-          <Button jssStyle={jssStyle} type='primary'>
+          <Button jssStyle={jssStyle} text type='primary'>
             Primary
           </Button>
         </span>
         <span>
-          <Button jssStyle={jssStyle} type='success'>
+          <Button jssStyle={jssStyle} text type='success'>
             Success
           </Button>
         </span>
         <span>
-          <Button jssStyle={jssStyle} type='danger'>
+          <Button jssStyle={jssStyle} text type='danger'>
             Danger
           </Button>
         </span>
         <span>
-          <Button jssStyle={jssStyle} type='warning'>
+          <Button jssStyle={jssStyle} text type='warning'>
             Warning
           </Button>
         </span>
         <span>
-          <Button jssStyle={jssStyle} type='secondary'>
+          <Button jssStyle={jssStyle} text type='secondary'>
             Secondary
           </Button>
         </span>
