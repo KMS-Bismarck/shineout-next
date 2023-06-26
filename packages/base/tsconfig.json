@@ -4,7 +4,9 @@
     "declaration": true,
     "baseUrl": "./",
     "paths": {
-      "@sheinx/base": ["./src/index"]
+      "@sheinx/base": ["./src/index"],
+      "@sheinx/hooks": ["../hooks/src/index"],
+      "@sheinx/shineout-style": ["../shineout-style/src/index"]
     }
   },
   "include": ["src"]
