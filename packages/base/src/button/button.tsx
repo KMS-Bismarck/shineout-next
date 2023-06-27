@@ -6,9 +6,11 @@ import { ButtonProps } from './button.type';
 const Button = (props: ButtonProps) => {
   const { jssStyle, className, style, children, renderInnerWrapper, ...rest } = props;
 
-  const { getRootProps, getButtonProps, disabled, text, loading, type } = useButton({
-    ...rest,
-  });
+  const { getRootProps, getButtonProps, disabled, text, loading, size, type, htmlType } = useButton(
+    {
+      ...rest,
+    },
+  );
 
   const rootClass = classNames([
     className,
@@ -18,19 +20,34 @@ const Button = (props: ButtonProps) => {
       [jssStyle.disabled]: disabled,
       [jssStyle.loading]: loading,
       [jssStyle.text]: text,
+      [jssStyle.small]: size === 'small',
+      [jssStyle.large]: size === 'large',
     },
   ]);
 
   const buttonProps = getButtonProps();
 
-  let buttonInnerEl = <span>{children}</span>;
+  let buttonInnerEl: React.ReactNode = <span>{children}</span>;
 
   if (typeof renderInnerWrapper === 'function') {
     buttonInnerEl = renderInnerWrapper(children);
   }
 
+  let loadingEl: React.ReactNode = null;
+
+  if (loading) {
+    // Spin 组件，待实现后替换
+    loadingEl = <span>Spin</span>;
+  }
+
   return (
-    <button {...getRootProps({ className: rootClass, style })} {...buttonProps} type='button'>
+    <button
+      {...getRootProps({ className: rootClass, style })}
+      {...buttonProps}
+      // eslint-disable-next-line react/button-has-type
+      type={htmlType}
+    >
+      {loadingEl}
       {buttonInnerEl}
     </button>
   );

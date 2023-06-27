@@ -8,6 +8,8 @@ export interface ButtonClasses {
   disabled: string;
   loading: string;
   text: string;
+  small: string;
+  large: string;
 
   // 类型
   default: string;
@@ -16,9 +18,6 @@ export interface ButtonClasses {
   danger: string;
   warning: string;
   success: string;
-  info: string;
-  light: string;
-  dark: string;
   link: string;
 }
 

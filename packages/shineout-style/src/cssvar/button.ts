@@ -16,12 +16,23 @@ function animation(start: string, middle: string, end: string) {
 
 export default {
   buttonNearlyMargin: va('button-nearly-margin', '8px'),
-
   buttonBorderRadius: 4,
+
+  // default size button
   buttonDefaultPaddingX: va('button-default-padding-x', '8px'),
   buttonDefaultPaddingY: va('button-default-padding-y', '5px'),
   buttonDefaultFontSize: va('button-default-font-size', sizeVar.fontSize),
   buttonDefaultLineHeight: va('button-default-line-height', sizeVar.commonLineHeight),
+
+  // small size button
+  buttonSmallPaddingX: va('button-small-padding-x', '8px'),
+  buttonSmallPaddingY: va('button-small-padding-y', '2px'),
+  buttonSmallFontSize: va('button-small-font-size', sizeVar.fontSizeSmall),
+
+  // large size button
+  buttonLargePaddingX: va('button-large-padding-x', '12px'),
+  buttonLargePaddingY: va('button-large-padding-y', '8px'),
+  buttonLargeFontSize: va('button-large-font-size', sizeVar.fontSizeLarge),
 
   // default button
   buttonDefaultColor: va('button-default-color', '#333e59'),
@@ -96,4 +107,9 @@ export default {
   buttonSecondaryColorHover: va('button-secondary-color-hover', colorVar.white),
   buttonSecondaryBgHover: va('button-secondary-bg-hover', colorVar.primaryColor),
   buttonSecondaryBorderColorHover: va('button-secondary-border-color-hover', colorVar.primaryColor),
+  buttonSecondaryActiveAnimation: animation(
+    colorVar.primaryColorFade60,
+    colorVar.primaryColorFade0,
+    colorVar.primaryColorFade0,
+  ),
 };

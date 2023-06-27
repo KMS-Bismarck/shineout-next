@@ -9,6 +9,7 @@ const useButton = (props: BaseButtonProps = {}) => {
     htmlType,
     loading,
     text,
+    size,
     space,
     href,
     target,
@@ -55,6 +56,7 @@ const useButton = (props: BaseButtonProps = {}) => {
 
   /**
    * 获取包含外部传入以及内部定义的的 props
+   * 返回的 props 最终会直接传递给 button 元素
    *
    * @param externalProps 外部传入的 props
    * @returns 所有的 props
@@ -69,13 +71,10 @@ const useButton = (props: BaseButtonProps = {}) => {
     const mergedEventHandlers = {
       ...propsToForward,
       ...externalProps,
-      type,
-      text,
+      size,
       space,
       href,
       target,
-      loading,
-      htmlType,
       disabled,
       onClick: handleClick(externalEventHandlers),
     };
@@ -88,9 +87,11 @@ const useButton = (props: BaseButtonProps = {}) => {
 
   return {
     type,
+    htmlType,
     disabled,
     loading,
     text,
+    size,
     getRootProps,
     getButtonProps,
   };

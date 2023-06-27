@@ -16,7 +16,9 @@ export default () => {
     <div>
       <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
         <span>
-          <Button jssStyle={jssStyle}>Default</Button>
+          <Button jssStyle={jssStyle} loading>
+            Default
+          </Button>
         </span>
 
         <span>

@@ -11,16 +11,16 @@ type ButtonClass =
   | 'danger'
   | 'warning'
   | 'success'
-  | 'info'
-  | 'light'
-  | 'dark'
   | 'link'
   | 'text'
-  | '@keyframes parimaryAnimation'
+  | 'small'
+  | 'large'
+  | '@keyframes primaryAnimation'
   | '@keyframes successAnimation'
   | '@keyframes dangerAnimation'
   | '@keyframes warningAnimation'
-  | '@keyframes defaultAnimation';
+  | '@keyframes defaultAnimation'
+  | '@keyframes secondaryAnimation';
 
 const button = (type: string) => ({
   color: cssVars[`button${type}Color` as keyof typeof cssVars],
@@ -34,7 +34,7 @@ const button = (type: string) => ({
   },
 
   '&:active': {
-    animationName: '$parimaryAnimation',
+    animationName: `$${type.toLocaleLowerCase()}Animation`,
   },
 });
 
@@ -88,6 +88,16 @@ const ButtonStyle: JsStyles<ButtonClass> = {
     },
   },
 
+  small: {
+    fontSize: cssVars.buttonSmallFontSize,
+    padding: `${cssVars.buttonSmallPaddingY} ${cssVars.buttonSmallPaddingX}`,
+  },
+
+  large: {
+    fontSize: cssVars.buttonLargeFontSize,
+    padding: `${cssVars.buttonLargePaddingY} ${cssVars.buttonLargePaddingX}`,
+  },
+
   default: {
     ...button('Default'),
   },
@@ -106,12 +116,31 @@ const ButtonStyle: JsStyles<ButtonClass> = {
   success: {
     ...button('Success'),
   },
-  info: {},
-  light: {},
-  dark: {},
   link: {},
-  disabled: {},
-  loading: {},
+  disabled: {
+    cursor: 'not-allowed',
+    opacity: 0.65,
+
+    '&:active': {
+      animationName: 'none',
+    },
+
+    '&:hover': {
+      opacity: 0.65,
+    },
+  },
+  loading: {
+    cursor: 'not-allowed',
+    opacity: 0.65,
+
+    '&:active': {
+      animationName: 'none',
+    },
+
+    '&:hover': {
+      opacity: 0.65,
+    },
+  },
 
   text: {
     '&$default': {
@@ -136,10 +165,11 @@ const ButtonStyle: JsStyles<ButtonClass> = {
 
   // animation
   '@keyframes defaultAnimation': cssVars.buttonDefaultActiveAnimation,
-  '@keyframes parimaryAnimation': cssVars.buttonPrimaryActiveAnimation,
+  '@keyframes primaryAnimation': cssVars.buttonPrimaryActiveAnimation,
   '@keyframes successAnimation': cssVars.buttonSuccessActiveAnimation,
   '@keyframes dangerAnimation': cssVars.buttonDangerActiveAnimation,
   '@keyframes warningAnimation': cssVars.buttonWarningActiveAnimation,
+  '@keyframes secondaryAnimation': cssVars.buttonSecondaryActiveAnimation,
 };
 
 export default ButtonStyle;

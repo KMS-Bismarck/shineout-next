@@ -8,9 +8,6 @@ export type ButtonType =
   | 'danger'
   | 'warning'
   | 'success'
-  | 'info'
-  | 'light'
-  | 'dark'
   | 'link';
 
 export interface ButtonPropsOwn {
@@ -18,9 +15,7 @@ export interface ButtonPropsOwn {
   loading?: boolean;
   outline?: boolean;
   type?: ButtonType;
-  /**
-   *  文字按钮
-   */
+  size?: 'small' | 'large' | 'default';
   text?: boolean;
   space?: boolean;
   href?: string;
