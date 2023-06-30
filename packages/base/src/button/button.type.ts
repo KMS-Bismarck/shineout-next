@@ -19,6 +19,7 @@ export interface ButtonClasses {
   warning: string;
   success: string;
   link: string;
+  href: string;
 }
 
 export interface ButtonBaseProps
@@ -26,6 +27,8 @@ export interface ButtonBaseProps
     Pick<CommonType, 'className' | 'size' | 'style'> {
   jssStyle: ButtonClasses;
   children?: React.ReactNode;
+  renderButton?: (buttonEl: React.ReactNode) => React.ReactElement;
+  renderLoading?: (buttonEl: React.ReactNode) => React.ReactElement;
   renderInnerWrapper?: (innerWrapperEl: React.ReactNode) => React.ReactElement;
 }
 

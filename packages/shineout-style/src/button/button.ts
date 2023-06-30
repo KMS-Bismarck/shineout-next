@@ -12,6 +12,7 @@ type ButtonClass =
   | 'warning'
   | 'success'
   | 'link'
+  | 'href'
   | 'text'
   | 'small'
   | 'large'
@@ -117,6 +118,9 @@ const ButtonStyle: JsStyles<ButtonClass> = {
     ...button('Success'),
   },
   link: {},
+  href: {
+    textDecoration: 'none',
+  },
   disabled: {
     cursor: 'not-allowed',
     opacity: 0.65,

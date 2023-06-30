@@ -2,6 +2,7 @@ import * as React from 'react';
 import useForkRef from '../../common/use-fork-ref';
 import { HandlerType, ObjectType } from '../../common/type';
 import { extractEventHandlers } from '../../utils';
+import { wrapSpan } from '../../utils/dom/element';
 import { BaseButtonProps, UseButtonRootSlotProps, UseButtonSlotProps } from './use-button.type';
 
 const useButton = (props: BaseButtonProps = {}) => {
@@ -36,6 +37,10 @@ const useButton = (props: BaseButtonProps = {}) => {
       onClick?.(event);
       otherHandlers?.onClick?.(event);
     };
+
+  const getSpaceChildren = (children: React.ReactNode, space?: boolean) => {
+    return wrapSpan(children, space);
+  };
 
   /**
    * 获取包含外部传入以及内部定义的的 props
@@ -92,8 +97,12 @@ const useButton = (props: BaseButtonProps = {}) => {
     loading,
     text,
     size,
+    space,
+    href,
+    target,
     getRootProps,
     getButtonProps,
+    getSpaceChildren,
   };
 };
 
