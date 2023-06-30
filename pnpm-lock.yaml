@@ -173,13 +173,13 @@ importers:
       immer:
         specifier: '>=10'
         version: 10.0.2
+      react:
+        specifier: '>=16.8'
+        version: 18.2.0
     devDependencies:
       '@sheinx/shineout-style':
         specifier: workspace:*
         version: link:../shineout-style
-      react:
-        specifier: 18.2.0
-        version: 18.2.0
 
   packages/hooks:
     dependencies:
